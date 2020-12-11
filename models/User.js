@@ -36,6 +36,9 @@ const UserModel = sequelize.define(
   },
   {
     // options
+    // freezeTableName ==> provides to access with a singular table name
+    // true ==> user (OK)
+    // false (default) ==> user (!) & users (OK)
   }
 );
 

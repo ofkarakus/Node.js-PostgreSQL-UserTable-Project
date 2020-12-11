@@ -10,6 +10,20 @@ exports.getUsers = async (req, res, next) => {
   }
 };
 
-exports.addUser = (req, res) => {
-  res.render('addUser')
-}
+// get request
+exports.displayAddUserForm = (req, res) => {
+  res.render("addUser");
+};
+
+// post request
+exports.addUser = async (req, res) => {
+  // add to db
+  console.log('req.body', req.body)
+  try {
+    const newUser = await UserModel.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+    });
+    res.redirect('/users');
+  } catch (error) {}
+};
