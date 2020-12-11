@@ -10,7 +10,7 @@ var usersRouter = require("./routes/users");
 var app = express();
 
 // TODO: to be removed
-require('./models/User')
+require("./models/User");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));

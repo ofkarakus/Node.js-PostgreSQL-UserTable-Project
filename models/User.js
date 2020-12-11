@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { Sequelize } = require("sequelize");
+const { Sequelize, DataTypes } = require("sequelize");
 
 // connect to db
 // const sequelize = new Sequelize('postgres://user:pass@example.com:5432/dbname')
@@ -21,12 +21,22 @@ sequelize
 // user table in the test db
 
 // modelName, attribute, options
-sequelize.define(
+const UserModel = sequelize.define(
+  // modelName
   "user",
   {
     // attributes
+    // id, firstName, lastName, createdAt, updatedAt
+    firstName: {
+      type: DataTypes.STRING,
+    },
+    lastName: {
+      type: DataTypes.STRING,
+    },
   },
   {
     // options
   }
 );
+
+module.exports = UserModel;
