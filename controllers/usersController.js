@@ -9,3 +9,7 @@ exports.getUsers = async (req, res, next) => {
     res.send("An error occured");
   }
 };
+
+exports.addUser = (req, res) => {
+  res.render('addUser')
+}
