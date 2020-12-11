@@ -15,15 +15,30 @@ exports.displayAddUserForm = (req, res) => {
   res.render("addUser");
 };
 
-// post request
+// on post request
 exports.addUser = async (req, res) => {
   // add to db
-  console.log('req.body', req.body)
   try {
-    const newUser = await UserModel.create({
+    await UserModel.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
     });
-    res.redirect('/users');
-  } catch (error) {}
+    res.redirect("/users");
+  } catch (error) {
+    console.log("An error occured", error);
+  }
+};
+
+// on delete request
+exports.deleteUser = async (req,res) => {
+  try {
+    await UserModel.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.redirect("/users");
+  } catch (error) {
+    console.log("An error occured", error);
+  }
 };

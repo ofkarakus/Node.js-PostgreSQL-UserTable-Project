@@ -18,7 +18,10 @@ app.set("view engine", "ejs");
 
 app.use(logger("dev"));
 app.use(express.json());
+
+// !!! formdan gelen bilgileri body'e yerlestiren middleware (req.body.firstName) !!!
 app.use(express.urlencoded({ extended: false }));
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 

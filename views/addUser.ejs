@@ -51,6 +51,7 @@
         </div>
         <div class="main-login main-center">
           <form class="form-horizontal" method="post" action="/users/add">
+            <!-- submit butonuna bastiktan sonra formdan action'da belirlenen '/users/add' pathine (sayfasina) post methoduyla gelen her islemin ((icinde input datasini tasiyarak geliyor => <input name='firstName'/> === req.body.firstName)) 'users/add' pathinin routing dosyasinda (../router/users.js'te) karsilanip tasidigi datayi (req.body.firstName) create fonksiyonunun icine koyarak ayni methodla (post) database'e gonderilmesi lazim.  -->
             <div class="form-group">
               <label for="firstName" class="cols-sm-2 control-label"
                 >First Name</label
