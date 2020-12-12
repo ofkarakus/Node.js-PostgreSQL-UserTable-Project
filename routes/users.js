@@ -12,5 +12,7 @@ router.post('/add', usersController.addUser)
 // O da param olur ve params'in altinda yer alir. (req.params.id olarak cagrilir.)
 router.get('/:id/delete', usersController.deleteUser)
 
+router.get('/:id/edit/:firstName/:lastName', usersController.displayEditUserForm)
+router.post('/:id/edit', usersController.editUser)
  
 module.exports = router;

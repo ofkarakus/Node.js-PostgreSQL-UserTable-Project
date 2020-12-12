@@ -3,7 +3,6 @@ exports.getUsers = async (req, res, next) => {
   // get users from db
   try {
     const userList = await UserModel.findAll();
-    console.log(userList);
     res.render("users", { userList });
   } catch (error) {
     res.send("An error occured");
@@ -30,7 +29,7 @@ exports.addUser = async (req, res) => {
 };
 
 // on delete request
-exports.deleteUser = async (req,res) => {
+exports.deleteUser = async (req, res) => {
   try {
     await UserModel.destroy({
       where: {
@@ -38,6 +37,34 @@ exports.deleteUser = async (req,res) => {
       },
     });
     res.redirect("/users");
+  } catch (error) {
+    console.log("An error occured", error);
+  }
+};
+
+exports.displayEditUserForm = (req, res) => {
+  res.render("editUser", {
+    firstName: req.params.firstName,
+    lastName: req.params.lastName,
+    id: req.params.id,
+  });
+};
+
+exports.editUser = async (req, res) => {
+  // update db
+  try {
+    await UserModel.update(
+      {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+    res.redirect('/users')
   } catch (error) {
     console.log("An error occured", error);
   }
